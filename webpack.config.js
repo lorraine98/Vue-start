@@ -26,7 +26,17 @@ module.exports = {
       },
       {
         test: /\.s?css$/,
-        use: ["vue-style-loader", "css-loader", "sass-loader"],
+        use: [
+          "vue-style-loader",
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader",
       },
     ],
   },
@@ -41,6 +51,7 @@ module.exports = {
       ],
     }),
   ],
+  //실제 배포는 호스팅 서버를 작성해야 함.
   devServer: {
     historyApiFallback: true,
   },
